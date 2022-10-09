@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+    <title>Quizz sobre cozinhar</title>
+</head>
+<body>
+    <h1>Quizz sobre cozinhar</h1>
+    
+    <!--score-->
+    <div id="score-container">
+        <p id="score-display"><span>70</span>%</p>
+        <p>Você acertou <span id="correct">7</span> de <span id="qtd-questions">10</span> perguntas</p>
+        <button id="restart">Refazer o Quiz</button>
+    </div>
+
+    <!--question-->
+    <div id="questions-container">
+        <p id="question">
+            <span id="question-number">1</span> - 
+            <span id="question-text">Quais destes cortes bovinos são mais adequados para fazer carne de panela?</span>
+        </p>
+    </div>
+
+    <!--answers options-->
+    <div id="answers-container">
+        <button class="wrong-answer"><span class="option-letter">a</span> <span class="question-answer"> Contrafilé, filé mignon, alcatra</span></button>
+        <button class="correct-answer"><span class="option-letter">b</span> <span class="question-answer"> Fraldinha, maminha, picanha</span></button>
+        <button><span class="option-letter">c</span> <span class="question-answer"> Acém, coxão mole, patinho</span></button>
+        <button><span class="option-letter">d</span> <span class="question-answer"> Fígado, coração, língua</span></button>
+    </div>
+    
+    <!--answer selected-->
+    <button class="answer-selected hide">
+        <span class="option-letter">c</span> <span class="question-answer">Acém, coxão mole, patinho</span>
+    </button>
+</body>
+</html>
