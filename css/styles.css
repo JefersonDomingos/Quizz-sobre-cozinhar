@@ -84,3 +84,78 @@ body{
 #restart:hover{
     transform: scale(1.1);
 }
+
+#questions-container{
+    width:50vw;
+    margin:50px auto;
+    text-align:center;
+    border: 3px solid #ffffff;
+    border-radius: 10px ;
+}
+
+#question{
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+#question-number{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+#answers-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px;
+    width:50vw;
+    margin:10px auto;
+}
+
+#answers-container button{
+    display: flex;
+    align-items: center;
+    width: 20vw;
+    margin-bottom: 10px;
+    padding: 10px 0 10px 10px;
+    border-radius: 10px;
+    border:1px solid transparent;
+    text-align: left;
+    cursor:pointer;
+    transition: .5s;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#answers-container button:hover{
+    background-color: #d34c47;
+    color:#ffffff;
+    
+}
+
+#answers-container .option-letter{
+    font-size: 20px;
+    background-color:#d34c47;
+    color:#ffffff;
+    margin-right: 15px;
+    padding: 5px;
+    text-transform: uppercase;
+    border-radius: 50%;
+    text-align: center;
+    flex:1 1 0;
+    max-width: 32px;
+
+}
+
+#answers-container .wrong-answer,
+#answers-container .wrong-answer .option-letter{
+    background-color: #ff0000;
+    color:#ffffff;
+}
+
+#answers-container .correct-answer,
+#answers-container .correct-answer .option-letter{
+    background-color: #00b95d;
+    color:#ffffff;
+}
