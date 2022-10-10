@@ -116,7 +116,7 @@ body{
 #answers-container button{
     display: flex;
     align-items: center;
-    width: 20vw;
+    width: 80%;
     margin-bottom: 10px;
     padding: 10px 0 10px 10px;
     border-radius: 10px;
@@ -159,3 +159,48 @@ body{
     background-color: #00b95d;
     color:#ffffff;
 }
+
+/*Parte mobile*/
+
+ @media(max-width:450px) {
+
+    #main-title{
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    #score-container{
+        width:80%;
+    }
+
+    #questions-container{
+        width: 90%;
+        padding:10px;
+    }
+
+    #answers-container{
+        width: 100%;
+    }
+
+ }
+
+ @media(max-width:820px){
+    #main-title{
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    #score-container{
+        width:80%;
+    }
+
+    #questions-container{
+        width: 90%;
+        padding:10px;
+    }
+
+    #answers-container{
+        width: 100%;
+    }
+
+ }
