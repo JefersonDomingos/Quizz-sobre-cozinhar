@@ -185,5 +185,33 @@ const questions = [
 ];
 
 
+//quizz sendo substituido para primeira pergunta
+
+function startQuizz() {
+    //criar a primeria pergunta
+    createQuestion(0);
+}
+
+//cria uma pergunta
+
+function createQuestion(i){
+//limpar a questão anterior
+    const allButtons = answersContainer.querySelectorAll("button");
+    allButtons.forEach(function (btn){
+        btn.remove();
+    });
+
+    //alterando texto da pergunta
+    const questionText = question.querySelector("#question-text");
+    const questionNumber = question.querySelector("#question-number");
+
+    //obtendo dados do objeto questions
+    questionText.textContent = questions[i].question;
+    questionNumber.textContent = i + 1;
+   
+}
+
+//inicialização do quizz
+startQuizz();
 
 
