@@ -9,7 +9,7 @@ const letters = ["a", "b", "c", "d"];
 let points = 0;
 let atualQuestion = 0;
 
-//Questões
+//Questões e respostas
 
 const questions = [
     {
@@ -208,10 +208,29 @@ function createQuestion(i){
     //obtendo dados do objeto questions
     questionText.textContent = questions[i].question;
     questionNumber.textContent = i + 1;
+
+    //inserir alternativas
+    questions[i].answers.forEach(function(answer, i){
+    
+        //criar templates dinamicamente
+        const answersTemplates = document.querySelector(".answer-template").cloneNode(true);
+        const letterBtn = document.querySelector(".option-letter");
+        const questionAnswerBtn = document.querySelector(".question-answer");
+
+        //indice do array da const letters
+        letterBtn.textContent = letters[i];
+
+        //chave da answer da const quetions
+        questionAnswerBtn.textContent = answer['answer'];
+        
+        //inserindo atributo no answerTemplates
+        answersTemplates.setAttribute("correct-answer", answer["correct"]);
+        console.log(answersTemplates);
+
+    })
    
 }
 
 //inicialização do quizz
 startQuizz();
-
 
