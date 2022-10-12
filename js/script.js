@@ -1,4 +1,3 @@
-console.log("JavaScript ok");
 //Variáveis
 const scoreContainer = document.querySelector("#score-container");
 const questionsContainer = document.querySelector("#questions-container");
@@ -7,7 +6,7 @@ const answersContainer = document.querySelector("#answers-container");
 const letters = ["a", "b", "c", "d"];
 
 let points = 0;
-let atualQuestion = 0;
+let actualQuestion = 0;
 
 //Questões e respostas
 
@@ -184,7 +183,6 @@ const questions = [
     },
 ];
 
-
 //quizz sendo substituido para primeira pergunta
 
 function startQuizz() {
@@ -213,24 +211,78 @@ function createQuestion(i){
     questions[i].answers.forEach(function(answer, i){
     
         //criar templates dinamicamente
-        const answersTemplates = document.querySelector(".answer-template").cloneNode(true);
-        const letterBtn = document.querySelector(".option-letter");
-        const questionAnswerBtn = document.querySelector(".question-answer");
+        const answersTemplate = document.querySelector(".answer-template").cloneNode(true);
+        const letterBtn = answersTemplate.querySelector(".option-letter");
+        const questionAnswerBtn = answersTemplate.querySelector(".question-answer");
 
         //indice do array da const letters
         letterBtn.textContent = letters[i];
 
-        //chave da answer da const quetions
+        //chave de answer da const questions
         questionAnswerBtn.textContent = answer['answer'];
         
         //inserindo atributo no answerTemplates
-        answersTemplates.setAttribute("correct-answer", answer["correct"]);
-        console.log(answersTemplates);
+        answersTemplate.setAttribute("correct-answer", answer["correct"]);
+        
+        //removendo classes hide e answer-template
+        answersTemplate.classList.remove("answer-template");
+        answersTemplate.classList.remove("hide");
 
-    })
-   
+        //inserir alternativas na tela
+        answersContainer.appendChild(answersTemplate);
+
+        //inserir evento nos botões de resposta
+        answersTemplate.addEventListener("click",function(){
+            checkAnswer(this);
+        })
+    });
+
+    //incrementar o número da questão 
+   actualQuestion++
+   console.log(actualQuestion);
 }
 
+//checando o botão clicado
+function checkAnswer(btn){
+    
+    //selecionando todos os botões
+    const buttons = answersContainer.querySelectorAll("button");
+    
+    //verifica se as repostas estão corretas e adiciona classes nos botões
+    buttons.forEach(function(button){
+        if(button.getAttribute("correct-answer") === "true"){
+            button.classList.add("correct-answer");
+
+            //verifica se o usuario acertou a pergunta
+            if(btn === button){
+                points++
+                console.log(points);
+            }
+        }
+        else{
+            button.classList.add("wrong-answer");
+        }
+    });
+
+    nextQuestion();
+}
+
+//exibe a proxima questão no quizz
+function nextQuestion(){
+
+    //timer para o usuário ver as respostas
+    setTimeout(function(){
+
+        //verificar se ainda há perguntas
+        if(actualQuestion >= questions.length){
+            console.log("quizz finalizado");
+
+        }
+        
+        //a cada 1.3 segundos é criada uma nova pergunta
+        createQuestion(actualQuestion);
+    },1300);
+}
 //inicialização do quizz
 startQuizz();
 
