@@ -275,14 +275,46 @@ function nextQuestion(){
 
         //verificar se ainda há perguntas
         if(actualQuestion >= questions.length){
+            //menssagem de quiz finalizado
+            messageQuizzFinished();
             console.log("quizz finalizado");
 
         }
         
         //a cada 1.3 segundos é criada uma nova pergunta
         createQuestion(actualQuestion);
-    },1300);
+    },300);
+
 }
+
+function messageQuizzFinished(){
+   
+    hideOrShowQuizz();
+    
+    //alterar dados da pontuação
+
+    //calcular score
+    const score = ((points/questions.length)*100).toFixed(2);
+
+    //mostrar score porcentagem
+    const porcetage = document.querySelector("#score-display span");
+    porcetage.textContent = score.toString();
+
+    //mostrar número de respostas corretas
+    const answersCorrects = document.querySelector("#corrects");
+    answersCorrects.textContent = points.toString();
+
+    //mostrar quantidade de pergunta
+    const answersQuantity = document.querySelector("#qtd-questions");
+    answersQuantity.textContent = questions.length;
+}
+
+//mostrar ou ocultar pontuação
+function hideOrShowQuizz(){
+    questionsContainer.classList.toggle("hide");
+    scoreContainer.classList.toggle("hide");
+}
+
 //inicialização do quizz
 startQuizz();
 
