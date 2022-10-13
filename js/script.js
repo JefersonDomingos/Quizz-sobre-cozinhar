@@ -239,7 +239,6 @@ function createQuestion(i){
 
     //incrementar o número da questão 
    actualQuestion++
-   console.log(actualQuestion);
 }
 
 //checando o botão clicado
@@ -277,28 +276,28 @@ function nextQuestion(){
         if(actualQuestion >= questions.length){
             //menssagem de quiz finalizado
             messageQuizzFinished();
-            console.log("quizz finalizado");
+            console.log("quizz finalizado com sucesso");
 
         }
         
         //a cada 1.3 segundos é criada uma nova pergunta
         createQuestion(actualQuestion);
-    },300);
+    },200);
 
 }
 
 function messageQuizzFinished(){
-   
+
     hideOrShowQuizz();
-    
+
     //alterar dados da pontuação
 
     //calcular score
     const score = ((points/questions.length)*100).toFixed(2);
 
     //mostrar score porcentagem
-    const porcetage = document.querySelector("#score-display span");
-    porcetage.textContent = score.toString();
+    const porcentage = document.querySelector("#score-display span");
+    porcentage.textContent = score.toString();
 
     //mostrar número de respostas corretas
     const answersCorrects = document.querySelector("#corrects");
@@ -307,6 +306,37 @@ function messageQuizzFinished(){
     //mostrar quantidade de pergunta
     const answersQuantity = document.querySelector("#qtd-questions");
     answersQuantity.textContent = questions.length;
+    
+    //dar o feedback
+    messageFeedback(answersCorrects);
+}
+
+//alterando a menssagem do feedback
+function messageFeedback (answersCorrects){
+  let menssageCongratulations = document.querySelector("#congratulations");
+  let acertos = parseInt(answersCorrects.textContent);
+  
+  
+  switch(acertos){
+    case 3:
+    menssageCongratulations.textContent = "Regular";
+    console.log(acertos);
+    
+
+    // case 4:
+    // menssageCongratulations.textContent = "Bom";
+    // break;
+
+    /*case 5:
+    menssageCongratulations.textContent = "Muito Bom";
+    break;
+    */
+
+    //default:
+      //  menssageCongratulations.textContent = "ERRO";
+        
+  }
+  
 }
 
 //mostrar ou ocultar pontuação
@@ -314,6 +344,15 @@ function hideOrShowQuizz(){
     questionsContainer.classList.toggle("hide");
     scoreContainer.classList.toggle("hide");
 }
+
+//reiniciar quizz
+const restartBtn = document.querySelector("#restart");
+restartBtn.addEventListener("click", function(){
+    actualQuestion = 0;
+    points = 0;
+    hideOrShowQuizz();
+    startQuizz();
+});
 
 //inicialização do quizz
 startQuizz();
