@@ -224,7 +224,7 @@ function createQuestion(i){
         //inserindo atributo no answerTemplates
         answersTemplate.setAttribute("correct-answer", answer["correct"]);
         
-        //removendo classes hide e answer-template
+        //removendo classes, para que o template seja idêntico aos botões de resposta, inclusive os estilos
         answersTemplate.classList.remove("answer-template");
         answersTemplate.classList.remove("hide");
 
@@ -234,7 +234,7 @@ function createQuestion(i){
         //inserir evento nos botões de resposta
         answersTemplate.addEventListener("click",function(){
             checkAnswer(this);
-        })
+        });
     });
 
     //incrementar o número da questão 
@@ -282,7 +282,7 @@ function nextQuestion(){
         
         //a cada 1.3 segundos é criada uma nova pergunta
         createQuestion(actualQuestion);
-    },200);
+    },1300);
 
 }
 
@@ -313,29 +313,24 @@ function messageQuizzFinished(){
 
 //alterando a menssagem do feedback
 function messageFeedback (answersCorrects){
-  let menssageCongratulations = document.querySelector("#congratulations");
-  let acertos = parseInt(answersCorrects.textContent);
-  
-  
-  switch(acertos){
-    case 3:
-    menssageCongratulations.textContent = "Regular";
-    console.log(acertos);
-    
+    let messageCongratulations = document.querySelector("#congratulations");
+    let acertos = parseInt(answersCorrects.textContent);
 
-    // case 4:
-    // menssageCongratulations.textContent = "Bom";
-    // break;
+    if(acertos <= 3){
+        return messageCongratulations.textContent = "Precisa melhorar!"
+    }
+    else if(acertos <= 5){
+        return messageCongratulations.textContent = "Muito bom!"
+    }
 
-    /*case 5:
-    menssageCongratulations.textContent = "Muito Bom";
-    break;
-    */
+    else if(acertos == 6){
+        return messageCongratulations.textContent = "Ótimo!"
+    }
 
-    //default:
-      //  menssageCongratulations.textContent = "ERRO";
-        
-  }
+    else if(acertos == 7){
+        return messageCongratulations.textContent = "Toop tá parabéns em!"
+    }
+
   
 }
 
