@@ -238,7 +238,7 @@ function createQuestion(i){
     });
 
     //incrementar o número da questão 
-   actualQuestion++
+   actualQuestion++;
 }
 
 //checando o botão clicado
@@ -255,14 +255,14 @@ function checkAnswer(btn){
             //verifica se o usuario acertou a pergunta
             if(btn === button){
                 points++
-                console.log(points);
             }
         }
         else{
             button.classList.add("wrong-answer");
         }
-    });
 
+    });
+    
     nextQuestion();
 }
 
@@ -317,18 +317,18 @@ function messageFeedback (answersCorrects){
     let acertos = parseInt(answersCorrects.textContent);
 
     if(acertos <= 3){
-        return messageCongratulations.textContent = "Precisa melhorar!"
+        return messageCongratulations.textContent = "Você precisa melhorar um pouco!"
     }
     else if(acertos <= 5){
-        return messageCongratulations.textContent = "Muito bom!"
+        return messageCongratulations.textContent = "Você está indo bem!"
     }
 
     else if(acertos == 6){
-        return messageCongratulations.textContent = "Ótimo!"
+        return messageCongratulations.textContent = "Você está ótimo!"
     }
 
     else if(acertos == 7){
-        return messageCongratulations.textContent = "Toop tá parabéns em!"
+        return messageCongratulations.textContent = "Você arrasou está parabéns!"
     }
 
   
